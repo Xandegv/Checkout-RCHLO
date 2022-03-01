@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="estilo.css">
+    <title>CHECKOUT RCHLO</title>
+<script language=javascript>
+
+function blokletras(objEvent) { 
+		
+        var iKeyCode;
+        iKeyCode = objEvent.keyCode;
+        if (iKeyCode >= 48 && iKeyCode <= 57) return true;
+        return false;
+        
+    }
+
+    function Mascara (formato, keypress, objeto) {
+campo = eval (objeto);
+if (formato=='cpf') {
+
+separador1 = '.';
+separador2 = '-';
+conjunto1 = 3;
+conjunto2 = 7;
+conjunto3 = 11;
+
+if (campo.value.length == conjunto1) {
+
+    campo.value = campo.value + separador1;
+
+}
+
+if (campo.value.length == conjunto2) {
+
+    campo.value = campo.value + separador1;
+
+}
+
+if (campo.value.length == conjunto3) {
+
+    campo.value = campo.value + separador2;
+
+}
+
+}	}
+
+
+function validar() {
+        var nome = formulario.nomecompleto.value;
+        var email = formulario.email.value;
+        var cpf = formulario.cpf.value;
+        var cvv = formulario.cvv.value;
+        var lista = formulario.lista.value;
+        var validade = formulario.validade.value;
+
+        if (nome =="") {
+            alert('Nome Completo é obrigatório');
+            formulario.nomecompleto.focus();
+            return false;}
+
+        if (email =="") {
+            alert("Email é obrigatório");
+            formulario.email.focus();
+            return false;}
+            
+         if (cpf =="") {
+            alert("CPF é obrigatório");
+            formulario.cpf.focus();
+            return false;}
+
+            if (cvv =="") {
+            alert("CVV é obrigatório");
+            formulario.cvv.focus();
+            return false;}
+
+            if (lista =="") {
+            alert("Lista é obrigatório");
+            formulario.lista.focus();
+            return false;}
+
+            if (validade =="") {
+            alert("Validade é obrigatório");
+            formulario.nomecompleto.focus();
+            return false;}
+
+    
+        }
+
+</script>
+</head>
+<body>
+    <div id="topo">
+        <h1>Ótima Escolha! </h1>
+        <p> Obrigado por comprar na RCHLO! Preencha seus dados para efetivar a compra.</p>
+    </div>
+   <div id="suacompra"><b>Sua compra</b></div>
+    <div id="img">
+       
+        <img src="https://static.riachuelo.com.br/RCHLO/14247984003/portrait/279d0565feb361cff852a6a792ffdb5c89890ba3.jpg" width="500px" height="620  px"><br>
+    </div>
+    <div id="area">
+        <b> Produto</b> <br> Camiseta Manga Curta Malha Tie Dye The Simpsons Branco Riachuelo<br>
+         <b>Cor</b><br> Branco<br>
+         <b>Tamanho</b><br> G <br>
+         <b>Preço</b><br> R$ 69,90   <br>
+    </div>
+    <form name="formulario" >
+        <fieldset>
+            <div id="area2">
+            <legend id="titulo"> <b>Dados Pessoais</b> </legend>
+        <div id="texto">
+            <label><b>Nome Completo  </b></label>        
+            <input type="text" name = "nomecompleto" id="nomecompleto" maxlength="200" placeholder="Digite seu nome..." autocomplete="off" required>            
+        </div>
+        <label><b>E-mail</b></label>
+            <input type="email" name = "email" id="email" maxlength="300" placeholder="Digite seu E-mail..." autocomplete="off" required>
+            <br>
+            <label><b>CPF</b></label>
+            <input type="text" name = cpf  maxlength="14" placeholder="Digite seu CPF..." autocomplete="off" 
+            onkeypress="Mascara ('cpf',window.event.keyCode,'document.formulario.cpf'); return blokletras(event)">
+            <br>
+            <input type="checkbox" name="newsletter" id="newl">
+            <label>Quero receber a newsletter da RCHLO!</label>
+            </div>
+            <div id="area3">
+                <legend id="titulo"><b>Cartão de Crédito</b></legend>
+
+        <div id="texto">
+            <label><b>CVV</b></label>
+            <input type="text" name = "cvv" id="cvv" maxlength="3" placeholder="Digite seu CVV..." onkeypress="return blokletras(event)" autocomplete="off" required>
+        </div>
+
+       <div id="lista">
+            <label><b>Bandeira</b></label>
+            <select>
+                <option selected disabled value="">Selecione a Bandeira</option>
+                <option value="mastc">MasterCard</option>
+                <option value="visa">Visa</option>
+                <option value="amere">American Express</option>
+            </select>
+        </div>
+
+        <label><b>Validade</b></label>
+        <input type="month" name = "validade" autocomplete="off" maxlength="5" required><br>
+    <input type="submit" name = "confirmar" id="confirmar" value="Confirmar Pedido" onclick="validar()">
+</div>
+    <input id="rodape" disabled>
+            
+        </fieldset>
+    </form>
+</body>
+</html>
